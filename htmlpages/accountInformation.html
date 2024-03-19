@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Game - Launching</title>
+<link rel="stylesheet" href="home.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  .vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
+  }
+
+  .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .video-container iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #FFFFE0;
+    z-index: 1;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .additional-links ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+  }
+
+  .additional-links ul li a {
+    text-decoration: none;
+    color: #FFFFE0;
+    transition: color 0.3s;
+  }
+
+  .additional-links ul li a:hover {
+    color: #FFF;
+  }
+
+  .frame {
+    position: fixed;
+    top: 20%;
+    left: 15%;
+    width: 70%;
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .tab-container {
+    width: 25%;
+    background-color: #EEE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 20px;
+    gap: 10px;
+    border-right: 2px solid #CCC;
+  }
+
+  .tab {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    border-radius: 5px;
+    color: #333;
+    background-color: #DDD;
+    font-weight: 700;
+    border-bottom: 1px solid #CCC;
+  }
+
+  .tab.active {
+    background-color: #AAA;
+    color: #FFF;
+  }
+
+  .tab:hover {
+    background-color: #F0F0F0;
+    transform: translateY(-2px);
+  }
+
+  .tab:last-of-type {
+    border-bottom: none;
+  }
+
+  .content-area {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    overflow: auto; /* Adjusting overflow to auto for content scrolling */
+  }
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid #FFFFE0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  .user-info {
+    width: 100%;
+    padding: 0 20px; /* Add padding for alignment */
+  }
+
+  .user-info div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .user-info div input {
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    width: 60%; /* Adjust width as needed */
+  }
+
+  .edit-link {
+    align-self: center;
+    margin-top: auto; /* Adjusted for automatic margin at the top */
+    padding: 8px 24px;
+    background-color: #333;
+    color: #FFFFE0;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .edit-link:hover {
+    background-color: #444;
+    color: #FFF;
+  }
+
+</style>
+</head>
+<body>
+  <div class="vignette"></div>
+  <header>
+    <h1><a href="nouvelle_page.html" class="logo">Transcendance</a></h1>
+    <nav class="additional-links">
+      <ul>
+        <li><a href="#" class="logout">Logout</a></li>
+        <li><a href="#" class="chat">Chat</a></li>
+        <li><a href="#" class="profile" style="color: #FFFFE0;">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/kJ8NphYi1rU?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1&playlist=kJ8NphYi1rU&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="frame">
+    <div class="tab-container">
+      <div class="tab active">Account Information</div>
+      <div class="tab">Dashboard</div>
+      <div class="tab">Social Management</div>
+    </div>
+    <div class="content-area">
+      <div class="profile-pic"></div>
+      <div class="user-info">
+        <div><label>Username:</label><input type="text" value="Shrekito"></div>
+        <div><label>Mail:</label><input type="email" value="shrek@swamp.far"></div>
+        <div><label>Pronouns:</label><input type="text" value="They, them, it, whom"></div>
+        <div><label>Password:</label><input type="password" value="password"></div>
+      </div>
+      <a href="#" class="edit-link">Edit</a>
+    </div>
+  </div>
+</body>
+</html>
