@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRANSCENDANCE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+        }
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .chat-container {
+            position: fixed;
+            top: 60%; /* Décalage vers le bas */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            border-radius: 20px;
+            z-index: 3;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .user-list {
+            width: 30%;
+            background-color: #f2f2f2;
+            overflow-y: auto;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+        .chat-window {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        .user, .group {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+        }
+        .user:hover, .group:hover {
+            background-color: #e9e9e9;
+        }
+        .selected-user {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .message-input {
+            display: flex;
+            margin-top: auto;
+        }
+        .message-input input {
+            flex-grow: 1;
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .message-input button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(33, 33, 33, 0.9);
+            color: #FFFF99;
+            z-index: 10;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        .header-btn {
+            background: none;
+            border: none;
+            color: #FFFF99;
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 12px 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .profile-btn {
+            background-color: #FFFF99;
+            border-radius: 5px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="new_page.html" class="logo" style="color: #FFFF99; text-decoration: none; font-family: 'Roboto', sans-serif;">TRANSCENDANCE</a></h1>
+        <div>
+            <button class="header-btn">Chat</button>
+            <button class="header-btn">Logout</button>
+            <button class="header-btn profile-btn">Profile</button>
+        </div>
+    </header>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/kJ8NphYi1rU?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1&playlist=kJ8NphYi1rU&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="chat-container">
+        <div class="user-list">
+            <div class="user" onclick="selectChat('User 1')">User 1</div>
+            <div class="user" onclick="selectChat('User 2')">User 2</div>
+            <div class="user" onclick="selectChat('User 3')">User 3</div>
+            <hr>
+            <div class="group" onclick="selectChat('Group 1')">Group 1</div>
+            <div class="group" onclick="selectChat('Group 2')">Group 2</div>
+        </div>
+        <div class="chat-window">
+            <div class="selected-user">Select a user or group to start chatting</div>
+            <div id="messages">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="message-input">
+                <input type="text" id="messageText" placeholder="Type your message here..." />
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function selectChat(chatName) {
+            document.querySelector('.selected-user').textContent = "Chatting with: " + chatName;
+            document.getElementById('messages').innerHTML = ''; // Clears previous messages
+        }
+
+        document.getElementById('sendMessage').addEventListener('click', function() {
+            var messageText = document.getElementById('messageText').value;
+            if (messageText.trim() !== '') {
+                var messageElement = document.createElement('div');
+                messageElement.textContent = messageText;
+                messageElement.style.padding = "10px";
+                messageElement.style.margin = "5px 0";
+                messageElement.style.backgroundColor = "#BDE0FE";
+                messageElement.style.borderRadius = "10px";
+                document.getElementById('messages').appendChild(messageElement);
+                document.getElementById('messageText').value = ''; // Clear the input after sending
+                document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight; // Scroll to the bottom
+            }
+        });
+    </script>
+</body>
+</html>

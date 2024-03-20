@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
+        }
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+        }
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(33, 33, 33, 0.9);
+            color: #FFFFE0;
+            z-index: 10;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-btn {
+            background: none;
+            border: none;
+            color: #FFFFE0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 12px 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .profile-btn {
+            background-color: #FFFF99;
+            border-radius: 5px;
+            color: #000;
+        }
+        .frame {
+            position: fixed;
+            top: 20%;
+            left: 15%;
+            width: 70%;
+            height: 60%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            display: flex;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            z-index: 5;
+            overflow: hidden;
+        }
+        .tab-container {
+            width: 25%;
+            background-color: #EEE;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            padding: 20px;
+            gap: 20px;
+            border-right: 3px solid #CCC;
+        }
+        .tab {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 10px;
+            color: #333;
+            background-color: #F5F5F5;
+            font-weight: 700;
+            border-bottom: 2px solid #DDD;
+        }
+        .tab.active {
+            background-color: #78909C;
+            color: #FFF;
+        }
+        .tab:hover {
+            background-color: #CFD8DC;
+            transform: translateY(-5px);
+        }
+        .profile-section {
+            width: 75%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+        .profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 100%;
+            background-color: #DDD;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 50px;
+            border: 5px solid #BBB;
+        }
+        .profile-name {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 800;
+        }
+        .statistic {
+            font-size: 20px;
+            color: #666;
+            margin: 10px 0;
+        }
+        .statistic span {
+            font-weight: 700;
+            color: #000;
+        }
+        .upload-btn-wrapper {
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .upload-btn-wrapper input[type="file"] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        .progress-bar {
+            display: block;
+            height: 25px;
+            background-color: #4CAF50;
+            border-radius: 12px;
+            text-align: center;
+            line-height: 25px;
+            color: white;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="vignette"></div>
+    <header>
+        <h1><a href="nouvelle_page.html" class="logo">Transcendance</a></h1>
+        <div>
+            <button class="header-btn">Chat</button>
+            <button class="header-btn">Déconnexion</button>
+            <button class="header-btn profile-btn">Profil</button>
+        </div>
+    </header>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/kJ8NphYi1rU?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1&playlist=kJ8NphYi1rU&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="frame">
+        <div class="tab-container">
+            <div class="tab">Informations du compte</div>
+            <div class="tab active">Tableau de bord</div>
+            <div class="tab">Gestion sociale</div>
+        </div>
+        <div class="profile-section">
+            <div class="profile-pic" id="profile-pic"></div>
+            <div class="profile-name">Shrekito</div>
+            <div class="statistic">Taux de victoire : <span>70%</span><span class="progress-bar" style="width: 70%;">70%</span></div>
+            <div class="statistic">Jeux gagnés : <span>70</span><span class="progress-bar" style="width: 70%;">70</span></div>
+            <div class="statistic">Jeux perdus : <span>30</span><span class="progress-bar" style="width: 30%; background-color: #f44336;">30</span></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('profile-pic-input').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profile-pic').style.backgroundImage = 'url(' + e.target.result + ')';
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+    </script>
+</body>
+</html>
