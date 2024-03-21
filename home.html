@@ -5,19 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Transcendance</title>
 <link rel="stylesheet" href="home.css">
+<style>
+  /* Style pour la barre horizontale noire transparente avec opacité */
+  .additional-links ul li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.418); /* Barre horizontale noire avec une légère opacité */
+  }
+
+  /* Style pour le header */
+  header {
+    position: fixed;
+    margin-top: 0; /* Supprimer la marge par défaut */
+    padding-top: 0; /* Supprimer le rembourrage par défaut */
+    margin-bottom: 10px; /* Ajouter une marge en bas pour étaler le contenu vers le bas */
+    height: 100px; /* Hauteur du header */
+  }
+
+  /* Style pour la vidéo en arrière-plan */
+  #background-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrage horizontal et vertical */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  /* Style pour la barre horizontale */
+  .header-bar {
+    position: absolute;
+    top: 0; /* Positionnée au-dessus du header */
+    left: 0;
+    width: 100%;
+    height: 80px; /* Hauteur ajustée pour s'étendre jusqu'en haut de la page */
+    background-color: rgba(76, 75, 75, 0.9); /* Couleur de la barre avec opacité réduite */
+    z-index: 0; /* Assurer que la barre est derrière tout le contenu */
+  }
+  
+  /* Style pour le texte "Transcendance" */
+  .logo {
+    position: relative;
+    z-index: 1; /* Assurer que le texte est au-dessus de la barre */
+  }
+</style>
 </head>
 <body>
+  <div class="header-bar"></div> <!-- Barre horizontale -->
   <div class="vignette"></div> <!-- Ajout de la vignette -->
   <header>
     <h1><a href="home.html" class="logo">Transcendance</a></h1>
     <nav class="additional-links">
         <ul>
-            <li><a href="#" class="logout">Logout</a></li>
-            <li><a href="#" class="chat">Chat</a></li>
-            <li><a href="#" class="profile">Profile</a></li>
+            <li><a href="login.html" class="logout">Logout</a></li>
+            <li><a href="generalchat.html" class="chat">Chat</a></li>
+            <li><a href="dashboard.html" class="profile">Profile</a></li>
         </ul>
     </nav>
-</header>
+  </header>
 <video autoplay muted loop id="background-video">
   <source src="video.mp4" type="video/mp4">
   Your browser does not support the video tag.
