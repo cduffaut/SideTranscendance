@@ -83,7 +83,7 @@ nav ul li a {
 .menu {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /*align-items: center;*/
     z-index: 2; /* Assurez-vous que le contenu est au-dessus de la vidéo */
 }
 
@@ -93,7 +93,8 @@ nav ul li a {
     padding: 20px 40px;
     background-color: #FFFF99;
     border: none;
-    margin: 20px 0;
+    margin-top: 10px; /* Augmenter l'espace entre les boutons et le haut */
+    margin-bottom: 20px; /* Augmenter l'espace entre les boutons et le bas */
     border-radius: 10px;
     text-transform: uppercase;
     width: 110%;

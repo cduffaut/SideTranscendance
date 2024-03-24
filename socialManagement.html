@@ -3,10 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Settings</title>
-<link rel="stylesheet" href="home.css">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<title>Online Game - launching</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style>
+  /* Styles communs */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Image de fond avec effet noir et blanc */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://e1.pxfuel.com/desktop-wallpaper/281/253/desktop-wallpaper-best-6-80s-backgrounds-on-hip-retro-80s.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+    z-index: -1;
+  }
+
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    z-index: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    text-decoration: none;
+    color: #FFFF99; /* Changement de couleur */
+    font-size: 47px; /* Taille de police agrandie */
+  }
+
+  .additional-links ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+  }
+
+  .additional-links ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px; /* Taille de police agrandie */
+    font-weight: bold; /* Optionnel : rendre le texte en gras */
+  }
+
+  .additional-links ul li a.profile {
+    color: #FFFF99; /* Changement de couleur pour PROFILE */
+  }
+
+  /* Contenu */
+  .content {
+    position: relative;
+    padding: 50px;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+  }
+
+  .title-container {
+    margin-bottom: 40px;
+  }
+
+  .title-container h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 60px;
+    margin: 0;
+  }
+
+  .separator-line {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    margin: 20px 0;
+  }
+
+  .select-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    font-size: 24px;
+  }
+
+  .select-text select, .select-text .slider {
+    margin: 0 10px;
+    font-size: 18px;
+    background-color: #FFFF99;
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: black;
+  }
+
+  .slider {
+    width: 50%;
+  }
+
+  .create-button {
+    padding: 20px 25px;
+    background-color: #FFFF99;
+    color: #333;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .create-button:hover, .create-button:focus {
+    background-color: #cccc00;
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .exit-link {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+  /* Styles de la vignette */
   .vignette {
     position: fixed;
     top: 0;
@@ -16,6 +155,7 @@
     box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
   }
 
+  /* Styles de la vidéo */
   .video-container {
     position: absolute;
     top: 0;
@@ -30,41 +170,10 @@
     height: 100%;
   }
 
-  header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    color: #FFFFE0;
-    z-index: 1;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-  }
-
-  .additional-links ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-    margin-left: auto;
-  }
-
-  .additional-links ul li a {
-    text-decoration: none;
-    color: #FFFFE0;
-    transition: color 0.3s;
-  }
-
-  .additional-links ul li a:hover {
-    color: #FFF;
-  }
-
+  /* Styles du cadre */
   .frame {
     position: fixed;
-    top: 20%;
+    top: 25%;
     left: 15%;
     width: 70%;
     height: 60%;
@@ -95,14 +204,14 @@
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     border-radius: 5px;
-    color: #333;
+    color: #FFFF99;
     background-color: #DDD;
     font-weight: 700;
     border-bottom: 1px solid #CCC;
   }
 
   .tab.active {
-    background-color: #AAA;
+    background-color: #000000;
     color: #FFF;
   }
 
@@ -114,6 +223,11 @@
   .tab:last-of-type {
     border-bottom: none;
   }
+  
+  .tab a {
+  text-decoration: none;
+}
+
 
   .content-area {
     flex-grow: 1;
@@ -142,13 +256,14 @@
     list-style: none;
     width: 100%;
     padding: 0;
+    justify-content: flex-start; /* Modifier cette ligne */
     margin-top: 10px;
   }
 
   .user-list li {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start; /* Modifier de space-between à flex-start */
     padding: 10px 0;
   }
 
@@ -157,9 +272,31 @@
     height: 40px;
     border-radius: 50%;
     background-color: #DDD;
-    margin-right: 10px;
+    margin-right: 5px;
     background-size: cover;
+    background-size: cover;
+    background-position: center;
     position: relative; /* Ajouté pour le positionnement de l'indicateur */
+  }
+
+  .user-photo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 255, 255, 0.5); */ /* Commentez ou supprimez cette ligne pour supprimer le filtre blanc */
+    z-index: 1; /* Au-dessus de l'image, mais en-dessous du contenu texte */
+}
+
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .username {
+    margin-left: 10px; /* Ajustez cette valeur selon vos préférences */
   }
 
   .status-indicator {
@@ -170,13 +307,16 @@
     right: 5px; /* Déplace l'indicateur vers la droite de la photo */
     bottom: 0; /* Alignement au bas de la photo */
     background-color: red; /* Rouge pour hors ligne, changez à vert pour en ligne */
+    z-index: 2; /* Au-dessus du filtre blanc */
   }
 
-  .search-area button, .block-button {
+  .search-area button,
+  .block-button {
     padding: 8px 15px;
     border: none;
     background-color: #333;
     color: #FFFFE0;
+    margin-left: 40px; /* Ajoutez un espace à gauche des boutons */
     border-radius: 5px;
     cursor: pointer;
   }
@@ -197,28 +337,51 @@
     color: #FFF;
   }
 
+  body {
+    background-image: url('https://e1.pxfuel.com/desktop-wallpaper/281/253/desktop-wallpaper-best-6-80s-backgrounds-on-hip-retro-80s.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1; /* Placer en-dessous de tout le reste */
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://e1.pxfuel.com/desktop-wallpaper/281/253/desktop-wallpaper-best-6-80s-backgrounds-on-hip-retro-80s.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%); /* Convertir en noir et blanc */
+    z-index: -1; /* Placer en-dessous de tout le reste */
+  }
 </style>
 </head>
 <body>
   <div class="vignette"></div>
+
   <header>
-    <h1><a href="home.html" class="logo">Transcendance</a></h1>
+    <h1><a href="home.html" class="logo">TRANSCENDANCE</a></h1> <!-- Changement en majuscules -->
     <nav class="additional-links">
-      <ul>
-        <li><a href="login.html" class="logout">Logout</a></li>
-        <li><a href="generalchat.html" class="chat">Chat</a></li>
-        <li><a href="dashboard.html" class="profile" style="color: #FFFF99;">Profile</a></li>
-      </ul>
+        <ul>
+            <li><a href="login.html" class="logout">LOGOUT</a></li> <!-- Changement en majuscules -->
+            <li><a href="generalchat.html" class="chat">CHAT</a></li> <!-- Changement en majuscules -->
+            <li><a href="dashboard.html" class="profile">PROFILE</a></li> <!-- Changement en majuscules -->
+        </ul>
     </nav>
   </header>
-  <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/kJ8NphYi1rU?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1&playlist=kJ8NphYi1rU&mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
+
   <div class="frame">
     <div class="tab-container">
-      <div class="tab">Account Information</div>
-      <div class="tab">Dashboard</div>
-      <div class="tab active">Social Management</div>
+      <div class="tab"><a href="accountInformation.html" style="color: #000000;">Account Information</a></div>
+      <div class="tab"><a href="dashboard.html" style="color: #000000;">Dashboard</a></div>
+      <div class="tab active"><a href="socialManagement.html" style="color: #ffffff;">Social Management</a></div>      
     </div>
     <div class="content-area">
       <div class="search-area">
@@ -234,25 +397,22 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var users = [
-            {username: "Lolita564", imageUrl: "path/to/image1.jpg", online: true},
-            {username: "Famacito", imageUrl: "path/to/image2.jpg", online: false},
-            {username: "Mania_xLeaderz", imageUrl: "path/to/image3.jpg", online: true}
-        ];
+        var users = [            {username: "Lolita564", imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzO65Lpx5OR_-M92O1otaGdIt6nsTKfii_Bg&usqp=CAU", online: true},            {username: "Famacito", imageUrl: "https://risibank.fr/cache/medias/0/13/1326/132676/full.png", online: false},            {username: "Mania_xLeaderz", imageUrl: "https://cdn.gonzague.me/wp-content/uploads/2012/06/146646811-1200x900.gif", online: true}        ];
 
         var userList = document.querySelector('.user-list');
         userList.innerHTML = ''; // Clear existing list items
 
         users.forEach(function(user) {
-            var li = document.createElement('li');
-            li.innerHTML = `
-                <div class="user-photo" style="background-image: url('${user.imageUrl}');">
-                  <span class="status-indicator" style="background-color: ${user.online ? 'green' : 'red'};"></span>
-                </div>
-                ${user.username}
-                <button class="block-button">${user.online ? 'Block' : 'Unblock'}</button>
-            `;
-            userList.appendChild(li);
+          var li = document.createElement('li');
+          li.innerHTML = `
+              <div class="user-info">
+                  <div class="user-photo" style="background-image: url('${user.imageUrl}');">
+                      <span class="status-indicator" style="background-color: ${user.online ? 'green' : 'red'};"></span>
+                  </div>
+                  <span class="username">${user.username}</span>
+              </div>
+              <button class="block-button">${user.online ? 'Block' : 'Unblock'}</button>`;
+          userList.appendChild(li);
         });
     });
   </script>
