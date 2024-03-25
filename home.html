@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Transcendance</title>
+<title>Transcendance - home</title>
 <link rel="stylesheet" href="home.css">
 <style>
   /* Style pour la barre horizontale noire transparente avec opacité */
@@ -50,6 +50,19 @@
     position: relative;
     z-index: 1; /* Assurer que le texte est au-dessus de la barre */
   }
+    /* Style pour les boutons */
+    .menu button {
+    text-decoration: none; /* Supprimer le soulignement */
+    display: inline-block;
+  }
+  /* Style pour les liens à l'intérieur des boutons */
+  .menu button a {
+    color: inherit; /* Couleur du texte noire */
+    text-decoration: none; /* Supprimer le soulignement */
+  }
+  .menu {
+    margin-top: 120px; /* Ajustez la valeur de la marge selon vos besoins */
+  }
 </style>
 </head>
 <body>
@@ -71,10 +84,10 @@
 </video>
 <div id="container">
     <div class="menu">
-        <button type="button">Online Game</button>
-        <button type="button">Local Game</button>
-        <button type="button">Tournament</button>
-        <button type="button">Robot 1vs1</button>
+      <button type="button"><a href="online_game.html">Online Game</a></button>
+      <button type="button"><a href="local_game.html">Local Game</a></button>
+      <button type="button"><a href="tournament.html">Tournament</a></button>
+      <button type="button"><a href="robot_1vs1.html">Robot 1vs1</a></button>
     </div>
 </div>
 </body>
