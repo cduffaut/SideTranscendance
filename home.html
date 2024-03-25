@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Transcendance - home</title>
 <link rel="stylesheet" href="home.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
   /* Style pour la barre horizontale noire transparente avec opacité */
   .additional-links ul li {
@@ -44,11 +45,11 @@
     background-color: rgba(76, 75, 75, 0.9); /* Couleur de la barre avec opacité réduite */
     z-index: 0; /* Assurer que la barre est derrière tout le contenu */
   }
-  
   /* Style pour le texte "Transcendance" */
   .logo {
     position: relative;
     z-index: 1; /* Assurer que le texte est au-dessus de la barre */
+    font-family: 'Roboto', sans-serif; /* Ajout de la police Roboto */
   }
     /* Style pour les boutons */
     .menu button {
@@ -59,9 +60,15 @@
   .menu button a {
     color: inherit; /* Couleur du texte noire */
     text-decoration: none; /* Supprimer le soulignement */
+    font-family: 'Roboto', sans-serif; /* Ajout de la police Roboto */
   }
   .menu {
     margin-top: 120px; /* Ajustez la valeur de la marge selon vos besoins */
+  }
+  .logout, .chat, .profile {
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff; /* Ajoutez cette ligne pour fixer la couleur du texte */
+    text-decoration: none; /* Ajoutez cette ligne pour supprimer le soulignement */
   }
 </style>
 </head>
